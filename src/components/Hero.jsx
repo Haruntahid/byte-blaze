@@ -1,7 +1,9 @@
+import wave from "../assets/wave.svg";
+
 function Hero() {
   return (
     <>
-      <div className="hero min-h-[calc(100vh-120px)] bg-base-200">
+      <div className="hero min-h-[calc(100vh-120px)] bg-base-200 relative">
         <div className="hero-content text-center">
           <div className="max-w-lg -mt-16">
             <h1 className="text-5xl font-bold">
@@ -39,6 +41,8 @@ function Hero() {
             </a>
           </div>
         </div>
+
+        <img className="w-full absolute bottom-0" src={wave} alt="" />
       </div>
     </>
   );

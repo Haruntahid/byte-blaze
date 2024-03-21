@@ -1,4 +1,25 @@
+import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+
 function NavBar() {
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
+
+  const handelTheme = (event) => {
+    if (event) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
+
+  console.log(theme);
+
   return (
     <>
       <div className="navbar bg-base-100 shadow-lg px-8">
@@ -8,19 +29,29 @@ function NavBar() {
           </a>
         </div>
         <div className="flex-none">
-          <ul className="menu menu-horizontal px-1">
-            <li className="font-bold">
-              <a>Home</a>
-            </li>
-            <li className="font-bold">
-              <a>Blogs</a>
-            </li>
-            <li className="font-bold">
-              <a>Bookmarks</a>
-            </li>
+          <ul className="menu menu-horizontal px-1 space-x-6 mr-4">
+            <NavLink
+              to={"/"}
+              className={({ isActive }) => (isActive ? "text-primary" : "")}
+            >
+              <li className="font-bold">Home</li>
+            </NavLink>
+            <NavLink
+              to={"/blogs"}
+              className={({ isActive }) => (isActive ? "text-primary" : "")}
+            >
+              <li className="font-bold">Blogs</li>
+            </NavLink>
+            <NavLink
+              to={"/bookmarks"}
+              className={({ isActive }) => (isActive ? "text-primary" : "")}
+            >
+              <li className="font-bold">Bookmarks</li>
+            </NavLink>
           </ul>
           <label className="cursor-pointer grid place-items-center">
             <input
+              onChange={(event) => handelTheme(event.target.checked)}
               type="checkbox"
               className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"
             />
