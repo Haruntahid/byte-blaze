@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import errorImg from "../assets/404.jpg";
+import { Link } from "react-router-dom";
 
 function BlogCart({ blog }) {
-  const { cover_image, title, description, published_at } = blog;
+  const { id, cover_image, title, description, published_at } = blog;
   return (
     <>
-      <a
-        rel="noopener noreferrer"
-        href="#"
+      <Link
+        to={`/blog/${id}`}
         className="max-w-sm mx-auto transition border-2 p-2 hover:scale-105 border-opacity-30 border-primary hover:border-secondary  group hover:no-underline focus:no-underline text-black"
       >
         <img
@@ -24,7 +24,7 @@ function BlogCart({ blog }) {
           </span>
           <p>{description}</p>
         </div>
-      </a>
+      </Link>
     </>
   );
 }

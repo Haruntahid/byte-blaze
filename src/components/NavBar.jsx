@@ -12,7 +12,7 @@ function NavBar() {
 
   const handelTheme = (event) => {
     if (event) {
-      setTheme("dark");
+      setTheme("synthwave");
     } else {
       setTheme("light");
     }

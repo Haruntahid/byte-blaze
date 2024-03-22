@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import BlogCart from "../components/BlogCart";
 
 function Blogs() {
@@ -7,9 +7,8 @@ function Blogs() {
     <>
       <section className="px-4 sm:px-8 lg:px-12 py-8">
         <div className="container max-w-6xl py-6 mx-auto space-y-6 sm:space-y-12">
-          <a
-            rel="noopener noreferrer"
-            href="#"
+          <Link
+            to={`/blog/${blogs[0]?.id}`}
             className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12"
           >
             <img
@@ -26,7 +25,7 @@ function Blogs() {
               </span>
               <p>{blogs[0].description}</p>
             </div>
-          </a>
+          </Link>
 
           {/* grid card */}
           <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
