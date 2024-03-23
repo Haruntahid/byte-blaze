@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link, Outlet, useLoaderData } from "react-router-dom";
+import { FaRegBookmark } from "react-icons/fa";
+import { setBookmark } from "../utils/utilities";
 
 function Blog() {
   const data = useLoaderData();
@@ -11,7 +13,10 @@ function Blog() {
     published_at,
     public_reactions_count,
   } = data;
-  // console.log(data);
+
+  // const bookmark = (data) => {
+  //   setBookmark(data);
+  // };
   return (
     <>
       <div className="max-w-3xl px-6 py-16 mx-auto space-y-12">
@@ -74,6 +79,12 @@ function Blog() {
                 </svg>
                 <span>Author</span>
               </Link>
+              <div
+                className="px-4 py-4 rounded-full bg-purple-400"
+                onClick={() => setBookmark(data)}
+              >
+                <FaRegBookmark />
+              </div>
             </div>
           </div>
           <Outlet />
